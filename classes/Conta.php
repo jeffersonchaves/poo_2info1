@@ -26,4 +26,9 @@ class Conta
         }
     }
 
+    public function transferePar($contaDestino, float $valor):bool {
+        //TODO
+        return true;
+    }
+
 }
