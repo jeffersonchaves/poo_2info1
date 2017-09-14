@@ -3,56 +3,43 @@
 /**
  * Created by PhpStorm.
  * User: jefferson
- * Date: 29/08/17
- * Time: 16:00
+ * Date: 30/08/17
+ * Time: 15:58
  */
 class Conta
 {
-    //Atributos
-    public $numeroConta;
+    public $numero;
     public $dono;
-    public $saldo;
+    private $saldo = 0;
 
-    public function deposita(float $valor){
 
-        $this->saldo += abs($valor);
+    public function getSaldo(): float
+    {
+        return $this->saldo;
     }
 
-    public function saca(float $valor):bool {
-        if ($valor <= $this->saldo){
-            $this->saldo -= $valor;
+    public function saca(float $valor) :bool {
+        if ($valor < $this->saldo){
+            $this->saldo = $this->saldo - $valor;
             return true;
-        } else {
+        } else{
             return false;
         }
     }
 
-    public function transferePara(Conta $contaDestino, float $valor):bool {
+    public function deposita(float $valor) :void{
+
+        if ($valor > 0){
+            $this->saldo += $valor;
+        }
+    }
+
+    public function transferePara(Conta $contaDestino, float $valor){
 
         $deuCerto = $this->saca($valor);
 
         if ($deuCerto){
             $contaDestino->deposita($valor);
-            return true;
-        } else {
-            return false;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
