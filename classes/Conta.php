@@ -9,9 +9,14 @@
 class Conta
 {
     public $numero;
-    public $dono;
+    private $dono;
     private $saldo = 0;
 
+    public function setCliente(Cliente $cliente)
+    {
+
+        $this->dono = $cliente;
+    }
 
     public function getSaldo(): float
     {
