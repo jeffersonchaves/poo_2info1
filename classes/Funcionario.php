@@ -17,10 +17,7 @@ class Funcionario
 
     public function recebeAumento(float $aumento)
     {
-
-
         $this->salario = $this->salario + ($this->salario * abs($aumento));
-
     }
 
     public function calculaGanhoAnual()
